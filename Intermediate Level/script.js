@@ -1,68 +1,57 @@
-$('.visibility-cart').on('click',function(){
-       
-  var $btn =  $(this);
-  var $cart = $('.cart');
-  console.log($btn);
-  
-  if ($btn.hasClass('is-open')) {
-     $btn.removeClass('is-open');
-     $btn.text('O')
-     $cart.removeClass('is-open');     
-     $cart.addClass('is-closed');
-     $btn.addClass('is-closed');
-  } else {
-     $btn.addClass('is-open');
-     $btn.text('X')
-     $cart.addClass('is-open');     
-     $cart.removeClass('is-closed');
-     $btn.removeClass('is-closed');
-  }
+// Really messy...
 
-                  
+var el;
+
+$("tr").each(function() {
+  var subtotal = parseFloat($(this).children(".price").text().replace("€",""));
+  var amount = parseFloat($(this).children(".amount").children("input").val());
+  $(this).children(".pricesubtotal").text("€"+
+                                          (Math.round(
+                                            subtotal*amount*100
+                                          )/100).toFixed(2));
 });
 
-	// SHOPPING CART PLUS OR MINUS
-	$('a.qty-minus').on('click', function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
-    
-		if (value > 1) {
-			value = value - 1;
-		} else {
-			value = 0;
-		}
-    
-    $input.val(value);
-        
-	});
+$(".amount > input").bind("change keyup", function() {
+  if (parseFloat($(this).val())<1) {
+    $(this).val(1);
+    el = $(this).parents("td").parents("tr").children(".remove");
+    el.addClass("hey");
+    setTimeout(function() {
+      el.removeClass("hey");
+    }, 200);
+  }
+  var subtotal = parseFloat($(this).parents("td").parents("tr").children(".price").text().replace("€",""));
+  var amount = parseFloat($(this).parents("td").parents("tr").children(".amount").children("input").val());
+  $(this).parents("td").parents("tr").children(".pricesubtotal").text("€"+
+                                          (Math.round(
+                                            subtotal*amount*100
+                                          )/100).toFixed(2));
+  changed();
+});
 
-	$('a.qty-plus').on('click', function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
+$(".remove > div").click(function() {
+  $(this).parents("td").parents("tr").remove();
+  changed();
+});
 
-		if (value < 100) {
-		value = value + 1;
-		} else {
-			value =100;
-		}
+function changed() {
+  var subtotal = 0;
+  $(".p").each(function() {
+    subtotal = subtotal + parseFloat($(this).children(".pricesubtotal").text().replace("€",""));
+  });
+  $(".totalpricesubtotal").text("€"+(Math.round(subtotal*100)/100).toFixed(2));
+  var a = (subtotal/100*105)+parseFloat($(".shipping").text())
+  var total = (Math.round(a*100)/100).toFixed(2);
+  $(".realtotal").text(total);
+  $(".taxval").text("($"+(Math.round(subtotal*5)/100).toFixed(2)+") ");
+}
 
-		$input.val(value);
-	});
+$("#checkout").click(function() {
+  alert("And that's $"+$(".realtotal").text()+", please.");
+});
 
-// RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
-$('input').on('blur', function(){
+changed();
 
-	var input = $(this);
-	var value = parseInt($(this).val());
-
-		if (value < 0 || isNaN(value)) {
-			input.val(0);
-		} else if
-			(value > 100) {
-			input.val(100);
-		}
+$("#expand").click(function() {
+  $("#coolstuff").toggle();
 });

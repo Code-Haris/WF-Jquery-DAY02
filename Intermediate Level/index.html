@@ -2,139 +2,99 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Shopping Cart</title>
-  <meta name="viewport" content="width=device-width"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
+  <title>Shopping cart</title>
+  <link rel="stylesheet" href="./style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="container">
-  <div class="heading">
-    <h1>
-      <span class="shopper">the</span> Shopping Cart
-    </h1>
-
-    <a href="#" class="visibility-cart transition is-open">X</a>
-  </div>
-
-  <div class="cart transition is-open">
-
-    <a href="#" class="btn btn-update">Update cart</a>
-
-
-    <div class="table">
-
-      <div class="layout-inline row th">
-        <div class="col col-pro">Product</div>
-        <div class="col col-price align-center ">
-          Price
-        </div>
-        <div class="col col-qty align-center">QTY</div>
-        <div class="col">VAT</div>
-        <div class="col">Total</div>
-      </div>
-
-      <div class="layout-inline row">
-
-        <div class="col col-pro layout-inline">
-          <img src="https://thekittycatclan.files.wordpress.com/2016/07/img_9506.jpg" alt="kitten" />
-          <p>Happy Little Critter</p>
-        </div>
-
-        <div class="col col-price col-numeric align-center ">
-          <p>€59.99</p>
-        </div>
-
-        <div class="col col-qty layout-inline">
-          <a href="#" class="qty qty-minus">-</a>
-            <input type="numeric" value="3" />
-          <a href="#" class="qty qty-plus">+</a>
-        </div>
-
-        <div class="col col-vat col-numeric">
-          <p>€2.95</p>
-        </div>
-        <div class="col col-total col-numeric">               <p> €182.95</p>
-        </div>
-      </div>
-
-      <div class="layout-inline row row-bg2">
-
-        <div class="col col-pro layout-inline">
-          <img src="https://petcentral.chewy.com/wp-content/uploads/scared-kitten-hiding-TS-543180676-3.jpg" alt="kitten" />
-          <p>Scared Little Kittie</p>
-        </div>
-
-        <div class="col col-price col-numeric align-center ">
-          <p>€23.99</p>
-        </div>
-
-        <div class="col col-qty  layout-inline">
-          <a href="#" class="qty qty-minus ">-</a>
-            <input type="numeric" value="1" />
-          <a href="#" class="qty qty-plus">+</a>
-        </div>
-
-        <div class="col col-vat col-numeric">
-          <p>€1.95</p>
-        </div>
-        <div class="col col-total col-numeric">
-          <p>€25.94</p>
-        </div>
-
-      </div>
-
-       <div class="layout-inline row">
-
-        <div class="col col-pro layout-inline">
-          <img src="https://previews.123rf.com/images/bubutu/bubutu1803/bubutu180300023/97562596-curious-kitty-looking-from-behind-a-wooden-pot.jpg" alt="kitten" />
-          <p>Curious Little Begger</p>
-        </div>
-
-        <div class="col col-price col-numeric align-center ">
-          <p>€59.99</p>
-        </div>
-
-        <div class="col col-qty layout-inline">
-          <a href="#" class="qty qty-minus">-</a>
-            <input type="numeric" value="3" />
-          <a href="#" class="qty qty-plus">+</a>
-        </div>
-
-        <div class="col col-vat col-numeric">
-          <p>€2.95</p>
-        </div>
-         <div class="col col-total col-numeric">
-           <p>€182.95</p>
-         </div>
-      </div>
-
-       <div class="tf">
-         <div class="row layout-inline">
-           <div class="col">
-             <p>VAT</p>
-           </div>
-           <div class="col"></div>
-         </div>
-         <div class="row layout-inline">
-           <div class="col">
-             <p>Shipping</p>
-           </div>
-           <div class="col"></div>
-         </div>
-          <div class="row layout-inline">
-           <div class="col">
-             <p>Total</p>
-           </div>
-           <div class="col"></div>
-         </div>
-       </div>
-  </div>
-
-    <a href="#" class="btn btn-update">Update cart</a>
-
+<div id="container">
+<table>
+  <!--<tr style="text-align:center;">
+    <td>Image</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Amount</td>
+    <td>Subtotal</td>
+    <td> </td>
+  </tr>-->
+  <tr class="p">
+    <td class="image"><img src="http://cdn2.ubergizmo.com/wp-content/uploads/2012/09/ipod-touch-5g.jpg" /></td>
+    <td class="name">iPod touch</td>
+    <td class="price">€299.99</td>
+    <td class="amount"><input type="number" value="1" min="0" /></td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr class="p">
+    <td class="image"><img src="http://lh3.ggpht.com/_sXfqQA9D6CE/S4idRoV5L3I/AAAAAAAAAUg/MGcaKoWqeqI/s320/pens1.jpg" /></td>
+    <td class="name">Pack of 5 pens</td>
+    <td class="price">€4.99</td>
+    <td class="amount"><input type="number" value="3" min="0" /></td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr class="p">
+    <td class="image"><img src="https://image.guim.co.uk/sys-images/Guardian/Pix/audio/video/2012/6/19/1340095553637/Microsoft-Surface-tablet--008.jpg" /></td>
+    <td class="name">Microsoft Surface</td>
+    <td class="price">€599.99</td>
+    <td class="amount">
+      <input type="number" value="1" min="0" />
+    </td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr class="p">
+    <td class="image"><img src="http://www.rinogualtieri.it/images/libri1.jpg" /></td>
+    <td class="name">Books</td>
+    <td class="price">€29.99</td>
+    <td class="amount"><input type="number" value="5" min="0" /></td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr class="p">
+    <td class="image"><img src="https://image.guim.co.uk/sys-images/Admin/BkFill/Default_image_group/2013/2/19/1361294379900/Cup-cakes-010.jpg" /></td>
+    <td class="name">Cupcakes</td>
+    <td class="price">€0.99</td>
+    <td class="amount"><input type="number" value="20" min="0" /></td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr class="p">
+    <td class="image"><img src="https://i.ytimg.com/vi/g7ZnOq-o7rc/hqdefault.jpg" /></td>
+    <td class="name">Pokémon Red</td>
+    <td class="price">€49.99</td>
+    <td class="amount"><input type="number" value="2" min="0" /></td>
+    <td class="pricesubtotal"></td>
+    <td class="remove"><div>&times</div></td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td>Subtotal:</td>
+    <td class="totalpricesubtotal"></td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td style="border-top:1px solid white" colspan="6"><br />
+      With 5% sales tax <span class="taxval"></span> and <span class="shipping">10</span>€ shipping:<br />
+      <span class="big">Total: €<span class="realtotal">0</span></span>
+    </td>
+  </tr>
+</table>
+  <div id="checkout">Checkout<span> &rarr;</span></div>
+<div id="footer">
+  <ul>
+    <li>Change the amount of stuff and see the subtotal and total change</li>
+    <li>Try to change the amount of items to minus amounts or 0</li>
+    <li>Delete items and see the totals change</li>
+  </ul>
+  <hr />
+  This is my first entry for this week's <a href="https://codepen.io/tag/rodeo-007">CodePen Pattern Rodeo</a>.<br />
+  If you like this pen, please heart it :)
+</div>
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
