@@ -43,7 +43,7 @@ function changed() {
   var a = (subtotal/100*105)+parseFloat($(".shipping").text())
   var total = (Math.round(a*100)/100).toFixed(2);
   $(".realtotal").text(total);
-  $(".taxval").text("($"+(Math.round(subtotal*5)/100).toFixed(2)+") ");
+  $(".taxval").text("($"+(Math.round(subtotal*22)/100).toFixed(2)+") ");
 }
 
 $("#checkout").click(function() {
